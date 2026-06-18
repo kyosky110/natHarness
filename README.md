@@ -41,6 +41,14 @@ cd natHarness
 ./scripts/install.sh
 ```
 
+Or ask Codex to install it with the built-in `skill-installer` skill:
+
+```text
+Use skill-installer to install kyosky110/natHarness from GitHub with path "." and name "agent-harness".
+```
+
+Restart Codex after installing a new skill.
+
 The installer copies `SKILL.md` and `templates/` into `~/.codex/skills/agent-harness/`.
 If an installation already exists, it is backed up first under `~/.codex/skills/`.
 
@@ -119,6 +127,14 @@ git clone https://github.com/kyosky110/natHarness.git
 cd natHarness
 ./scripts/install.sh
 ```
+
+也可以在 Codex 里通过内置的 `skill-installer` skill 安装：
+
+```text
+使用 skill-installer 从 GitHub 安装 kyosky110/natHarness，path 使用 "."，name 使用 "agent-harness"。
+```
+
+安装新的 skill 后，需要重启 Codex 才会生效。
 
 安装脚本会把 `SKILL.md` 和 `templates/` 复制到 `~/.codex/skills/agent-harness/`。
 如果本机已经安装过，会先在 `~/.codex/skills/` 下备份旧版本。
