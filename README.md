@@ -21,19 +21,31 @@ This repository is the source of truth for the global skill installed at:
 
 ## Install
 
-Install directly without cloning:
+### 1. Direct install without cloning
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install.sh | bash
 ```
 
-Or install a specific branch or tag:
+To install a specific branch or tag:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install.sh | NAT_HARNESS_REF=main bash
 ```
 
-For development, clone the repository and run the installer locally:
+This installer backs up an existing `~/.codex/skills/agent-harness/` directory before replacing it.
+
+### 2. Install with Codex skill-installer
+
+Run the built-in skill installer script:
+
+```bash
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo kyosky110/natHarness --path . --name agent-harness
+```
+
+This method installs through Codex's built-in `skill-installer`. It is best for first-time installation because it stops if `~/.codex/skills/agent-harness/` already exists.
+
+### 3. Clone for development
 
 ```bash
 git clone https://github.com/kyosky110/natHarness.git
@@ -41,16 +53,10 @@ cd natHarness
 ./scripts/install.sh
 ```
 
-Or ask Codex to install it with the built-in `skill-installer` skill:
+Restart Codex after installing with any method.
 
-```text
-Use skill-installer to install kyosky110/natHarness from GitHub with path "." and name "agent-harness".
-```
-
-Restart Codex after installing a new skill.
-
-The installer copies `SKILL.md` and `templates/` into `~/.codex/skills/agent-harness/`.
-If an installation already exists, it is backed up first under `~/.codex/skills/`.
+Methods 1 and 3 copy `SKILL.md` and `templates/` into `~/.codex/skills/agent-harness/`.
+If an installation already exists, they back it up first under `~/.codex/skills/`.
 
 ## Update
 
@@ -108,7 +114,7 @@ Agent Harness 是一个可复用的 Codex skill，用来给项目安装一套轻
 
 ### 安装
 
-不需要 clone，直接执行：
+#### 1. 不 clone，直接安装
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install.sh | bash
@@ -120,7 +126,19 @@ curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/i
 curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install.sh | NAT_HARNESS_REF=main bash
 ```
 
-如果要参与开发，可以 clone 后本地安装：
+这种方式会在覆盖 `~/.codex/skills/agent-harness/` 前自动备份旧版本。
+
+#### 2. 通过 Codex skill-installer 安装
+
+执行内置 skill-installer 脚本：
+
+```bash
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo kyosky110/natHarness --path . --name agent-harness
+```
+
+这种方式使用 Codex 内置的 `skill-installer`。它更适合首次安装，因为如果 `~/.codex/skills/agent-harness/` 已经存在，它会停止而不是覆盖。
+
+#### 3. clone 后用于开发
 
 ```bash
 git clone https://github.com/kyosky110/natHarness.git
@@ -128,15 +146,9 @@ cd natHarness
 ./scripts/install.sh
 ```
 
-也可以在 Codex 里通过内置的 `skill-installer` skill 安装：
+任一方式安装后，都需要重启 Codex 才会生效。
 
-```text
-使用 skill-installer 从 GitHub 安装 kyosky110/natHarness，path 使用 "."，name 使用 "agent-harness"。
-```
-
-安装新的 skill 后，需要重启 Codex 才会生效。
-
-安装脚本会把 `SKILL.md` 和 `templates/` 复制到 `~/.codex/skills/agent-harness/`。
+方式 1 和方式 3 会把 `SKILL.md` 和 `templates/` 复制到 `~/.codex/skills/agent-harness/`。
 如果本机已经安装过，会先在 `~/.codex/skills/` 下备份旧版本。
 
 ### 更新
