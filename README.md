@@ -91,6 +91,47 @@ memory/pitfalls.md
 .harness/
 ```
 
+## Example Workflow
+
+User:
+
+```text
+Use agent-harness to start a task: add GitHub Actions CI to this project.
+```
+
+Codex creates or updates Harness files before editing project source code, for example:
+
+```text
+tasks/dashboard.md
+tasks/active/2026-06-18-github-actions-ci.md
+```
+
+The dashboard may show:
+
+```md
+# Dashboard
+
+## Active
+
+- [ ] Add GitHub Actions CI
+  - Status: proposed
+  - Next step: wait for user approval before editing project files
+```
+
+Codex then waits for user approval:
+
+```text
+I created the task draft and prepared an execution plan. Confirm when you want me to start changing project files.
+```
+
+User:
+
+```text
+Confirmed. Start implementation.
+```
+
+Codex then implements the task, updates the active task file, and archives it after completion.
+
 ## What Gets Installed
 
 - `AGENTS.md`: Project-level instructions for future Codex sessions.
@@ -227,6 +268,47 @@ memory/decisions.md
 memory/pitfalls.md
 .harness/
 ```
+
+### 示例工作流
+
+用户：
+
+```text
+使用 agent-harness 帮我开始一个任务：给这个项目添加 GitHub Actions CI。
+```
+
+Codex 会先创建或更新 Harness 文件，而不是直接修改项目源码，例如：
+
+```text
+tasks/dashboard.md
+tasks/active/2026-06-18-github-actions-ci.md
+```
+
+`tasks/dashboard.md` 可能显示：
+
+```md
+# Dashboard
+
+## Active
+
+- [ ] 添加 GitHub Actions CI
+  - 状态：待确认
+  - 下一步：等待用户确认后再修改项目文件
+```
+
+然后 Codex 会等待用户拍板：
+
+```text
+我已经创建任务草稿，并整理了执行计划。确认后我再开始修改项目文件。
+```
+
+用户：
+
+```text
+确认，开始执行。
+```
+
+之后 Codex 才开始执行任务，更新 active task 文件，并在完成后归档任务。
 
 ### 安装内容说明
 
