@@ -58,6 +58,39 @@ Restart Codex after installing with any method.
 Methods 1 and 3 copy `SKILL.md` and `templates/` into `~/.codex/skills/agent-harness/`.
 If an installation already exists, they back it up first under `~/.codex/skills/`.
 
+## Usage Examples
+
+After installing and restarting Codex, open a target project and ask:
+
+```text
+Use agent-harness to initialize this project.
+```
+
+To check and repair missing Harness files:
+
+```text
+Use agent-harness to check and repair the Harness files in this project.
+```
+
+To install only the Harness scaffold without touching business code:
+
+```text
+Use agent-harness to install the Harness scaffold only. Do not modify project source code.
+```
+
+Expected project files:
+
+```text
+AGENTS.md
+tasks/dashboard.md
+tasks/active/
+tasks/archive/
+memory/project.md
+memory/decisions.md
+memory/pitfalls.md
+.harness/
+```
+
 ## Update
 
 After pulling changes, run the installer again:
@@ -150,6 +183,39 @@ cd natHarness
 
 方式 1 和方式 3 会把 `SKILL.md` 和 `templates/` 复制到 `~/.codex/skills/agent-harness/`。
 如果本机已经安装过，会先在 `~/.codex/skills/` 下备份旧版本。
+
+### 使用示例
+
+安装并重启 Codex 后，在目标项目里对 Codex 说：
+
+```text
+使用 agent-harness 初始化当前项目。
+```
+
+检查并修复缺失的 Harness 文件：
+
+```text
+使用 agent-harness 检查并修复当前项目缺失的 Harness 文件。
+```
+
+只安装 Harness，不修改业务代码：
+
+```text
+使用 agent-harness 只安装 Harness 脚手架，不要修改项目源码。
+```
+
+预期生成或补齐的项目文件：
+
+```text
+AGENTS.md
+tasks/dashboard.md
+tasks/active/
+tasks/archive/
+memory/project.md
+memory/decisions.md
+memory/pitfalls.md
+.harness/
+```
 
 ### 更新
 
