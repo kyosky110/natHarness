@@ -2,7 +2,7 @@
 
 [中文说明](#中文说明)
 
-Agent Harness is a reusable Codex skill that installs a lightweight project workflow scaffold:
+Agent Harness is a reusable Codex and Claude Code skill that installs a lightweight project workflow scaffold:
 
 - `AGENTS.md`
 - `tasks/dashboard.md`
@@ -13,10 +13,11 @@ Agent Harness is a reusable Codex skill that installs a lightweight project work
 - `memory/pitfalls.md`
 - `.harness/`
 
-This repository is the source of truth for the global skill installed at:
+This repository is the source of truth for the skill installed at:
 
 ```text
 ~/.codex/skills/agent-harness/
+~/.claude/skills/agent-harness/
 ```
 
 ## Install
@@ -53,17 +54,40 @@ cd natHarness
 ./scripts/install.sh
 ```
 
-Restart Codex after installing with any method.
+### 4. Install for Claude Code
+
+Install directly into Claude Code's personal skills directory:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install-claude-code.sh | bash
+```
+
+Or from a local clone:
+
+```bash
+./scripts/install-claude-code.sh
+```
+
+This copies `SKILL.md` and `templates/` into `~/.claude/skills/agent-harness/`.
+
+Restart Codex or Claude Code after installing with any method.
 
 Methods 1 and 3 copy `SKILL.md` and `templates/` into `~/.codex/skills/agent-harness/`.
 If an installation already exists, they back it up first under `~/.codex/skills/`.
+Method 4 copies them into `~/.claude/skills/agent-harness/` and backs up an existing Claude Code skill first.
 
 ## Usage Examples
 
-After installing and restarting Codex, open a target project and ask:
+After installing and restarting Codex or Claude Code, open a target project and ask:
 
 ```text
 Use agent-harness to initialize this project.
+```
+
+In Claude Code, you can invoke the skill explicitly:
+
+```text
+/agent-harness initialize this project
 ```
 
 To check and repair missing Harness files:
@@ -99,7 +123,7 @@ User:
 Use agent-harness to start a task: add GitHub Actions CI to this project.
 ```
 
-Codex creates or updates Harness files before editing project source code, for example:
+Codex or Claude Code creates or updates Harness files before editing project source code, for example:
 
 ```text
 tasks/dashboard.md
@@ -118,7 +142,7 @@ The dashboard may show:
   - Next step: wait for user approval before editing project files
 ```
 
-Codex then waits for user approval:
+Codex or Claude Code then waits for user approval:
 
 ```text
 I created the task draft and prepared an execution plan. Confirm when you want me to start changing project files.
@@ -130,7 +154,7 @@ User:
 Confirmed. Start implementation.
 ```
 
-Codex then implements the task, updates the active task file, and archives it after completion.
+Codex or Claude Code then implements the task, updates the active task file, and archives it after completion.
 
 ## What Gets Installed
 
@@ -166,6 +190,7 @@ agent-harness/
       .harness/
   scripts/
     install.sh
+    install-claude-code.sh
 ```
 
 ## Development Notes
@@ -180,7 +205,7 @@ The template should remain reusable across projects:
 
 ## 中文说明
 
-Agent Harness 是一个可复用的 Codex skill，用来给项目安装一套轻量级的协作与任务管理骨架：
+Agent Harness 是一个可复用的 Codex 和 Claude Code skill，用来给项目安装一套轻量级的协作与任务管理骨架：
 
 - `AGENTS.md`
 - `tasks/dashboard.md`
@@ -195,6 +220,7 @@ Agent Harness 是一个可复用的 Codex skill，用来给项目安装一套轻
 
 ```text
 ~/.codex/skills/agent-harness/
+~/.claude/skills/agent-harness/
 ```
 
 ### 安装
@@ -231,17 +257,40 @@ cd natHarness
 ./scripts/install.sh
 ```
 
-任一方式安装后，都需要重启 Codex 才会生效。
+#### 4. 安装到 Claude Code
+
+直接安装到 Claude Code 的个人 skills 目录：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install-claude-code.sh | bash
+```
+
+如果已经 clone 到本地，也可以执行：
+
+```bash
+./scripts/install-claude-code.sh
+```
+
+这种方式会把 `SKILL.md` 和 `templates/` 复制到 `~/.claude/skills/agent-harness/`。
+
+任一方式安装后，都需要重启 Codex 或 Claude Code 才会生效。
 
 方式 1 和方式 3 会把 `SKILL.md` 和 `templates/` 复制到 `~/.codex/skills/agent-harness/`。
 如果本机已经安装过，会先在 `~/.codex/skills/` 下备份旧版本。
+方式 4 会复制到 `~/.claude/skills/agent-harness/`，并在覆盖前备份已有 Claude Code skill。
 
 ### 使用示例
 
-安装并重启 Codex 后，在目标项目里对 Codex 说：
+安装并重启 Codex 或 Claude Code 后，在目标项目里说：
 
 ```text
 使用 agent-harness 初始化当前项目。
+```
+
+在 Claude Code 里也可以显式调用：
+
+```text
+/agent-harness 初始化当前项目
 ```
 
 检查并修复缺失的 Harness 文件：
@@ -277,7 +326,7 @@ memory/pitfalls.md
 使用 agent-harness 帮我开始一个任务：给这个项目添加 GitHub Actions CI。
 ```
 
-Codex 会先创建或更新 Harness 文件，而不是直接修改项目源码，例如：
+Codex 或 Claude Code 会先创建或更新 Harness 文件，而不是直接修改项目源码，例如：
 
 ```text
 tasks/dashboard.md
@@ -296,7 +345,7 @@ tasks/active/2026-06-18-github-actions-ci.md
   - 下一步：等待用户确认后再修改项目文件
 ```
 
-然后 Codex 会等待用户拍板：
+然后 Codex 或 Claude Code 会等待用户拍板：
 
 ```text
 我已经创建任务草稿，并整理了执行计划。确认后我再开始修改项目文件。
@@ -308,7 +357,7 @@ tasks/active/2026-06-18-github-actions-ci.md
 确认，开始执行。
 ```
 
-之后 Codex 才开始执行任务，更新 active task 文件，并在完成后归档任务。
+之后 Codex 或 Claude Code 才开始执行任务，更新 active task 文件，并在完成后归档任务。
 
 ### 安装内容说明
 
@@ -350,6 +399,7 @@ agent-harness/
       .harness/
   scripts/
     install.sh
+    install-claude-code.sh
 ```
 
 ### 开发注意事项
