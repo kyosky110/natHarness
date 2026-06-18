@@ -91,6 +91,17 @@ memory/pitfalls.md
 .harness/
 ```
 
+## What Gets Installed
+
+- `AGENTS.md`: Project-level instructions for future Codex sessions.
+- `tasks/dashboard.md`: A lightweight task dashboard for tracking current work.
+- `tasks/active/`: Active task files for ongoing work.
+- `tasks/archive/`: Archived task records after work is completed.
+- `memory/project.md`: Stable project facts, conventions, and background.
+- `memory/decisions.md`: Important technical or workflow decisions.
+- `memory/pitfalls.md`: Known pitfalls, gotchas, and things to avoid.
+- `.harness/`: Reusable workflow templates used by the Harness.
+
 ## Update
 
 After pulling changes, run the installer again:
@@ -216,6 +227,17 @@ memory/decisions.md
 memory/pitfalls.md
 .harness/
 ```
+
+### 安装内容说明
+
+- `AGENTS.md`：当前项目的 Codex 工作说明，后续会话会优先参考这里。
+- `tasks/dashboard.md`：轻量任务看板，用来记录当前任务状态。
+- `tasks/active/`：进行中的任务文件。
+- `tasks/archive/`：已完成任务的归档记录。
+- `memory/project.md`：项目长期事实、约定和背景。
+- `memory/decisions.md`：重要技术决策或流程决策。
+- `memory/pitfalls.md`：踩坑记录、注意事项和需要避免的问题。
+- `.harness/`：Harness 使用的工作流模板。
 
 ### 更新
 
