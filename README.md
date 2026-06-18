@@ -19,11 +19,23 @@ This repository is the source of truth for the global skill installed at:
 
 ## Install
 
-Clone the repository and run the installer:
+Install directly without cloning:
 
 ```bash
-git clone https://github.com/<you>/agent-harness.git
-cd agent-harness
+curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install.sh | bash
+```
+
+Or install a specific branch or tag:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/kyosky110/natHarness/main/scripts/install.sh | NAT_HARNESS_REF=main bash
+```
+
+For development, clone the repository and run the installer locally:
+
+```bash
+git clone https://github.com/kyosky110/natHarness.git
+cd natHarness
 ./scripts/install.sh
 ```
 
