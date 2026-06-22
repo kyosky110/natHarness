@@ -17,12 +17,15 @@ cleanup() {
 trap cleanup EXIT
 
 resolve_repo_root() {
-  local script_dir
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local script_source="${BASH_SOURCE[0]:-}"
+  if [[ -n "$script_source" ]]; then
+    local script_dir
+    script_dir="$(cd "$(dirname "$script_source")" && pwd)"
 
-  if [[ -f "$script_dir/../SKILL.md" && -d "$script_dir/../templates" ]]; then
-    cd "$script_dir/.." && pwd
-    return
+    if [[ -f "$script_dir/../SKILL.md" && -d "$script_dir/../templates" ]]; then
+      cd "$script_dir/.." && pwd
+      return
+    fi
   fi
 
   tmp_dir="$(mktemp -d)"
@@ -36,7 +39,7 @@ resolve_repo_root() {
   fi
 
   mkdir -p "$extract_dir"
-  echo "Downloading https://github.com/$repo_slug ($repo_ref)..."
+  echo "Downloading https://github.com/$repo_slug ($repo_ref)..." >&2
   curl -fsSL "$url" -o "$archive"
   tar -xzf "$archive" -C "$extract_dir" --strip-components=1
   cd "$extract_dir" && pwd
