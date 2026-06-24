@@ -19,11 +19,12 @@
 
 1. 从用户输入或 `tasks/dashboard.md` 找到对应任务
 2. 读取 `.harness/active-task-template.md`
-3. 按 template 创建 `tasks/active/*.md`
-4. 更新 `tasks/dashboard.md`
-5. 将 dashboard 状态设为 `⏳ 等拍板`
-6. 展示 active task summary / plan
-7. 停止，等待用户确认
+3. 生成任务 ID，格式为当前创建时间 `YYYYMMDD-HHmmss`
+4. 按 template 创建 `tasks/active/{ID}-{slug}.md`
+5. 更新 `tasks/dashboard.md`
+6. 将 dashboard 状态设为 `⏳ 等拍板`
+7. 展示 active task summary / plan
+8. 停止，等待用户确认
 
 ---
 
@@ -56,6 +57,12 @@ active create 阶段禁止：
 
 创建 active task 时：
 
+* 任务 ID 必须使用当前创建时间，格式 `YYYYMMDD-HHmmss`
+* active 文件名必须使用 `tasks/active/{ID}-{slug}.md`
+* dashboard 的 ID 列必须展示同一个 ID
+* 不要使用 `101`、`102` 这类递增编号
+* 不要创建或维护 `next_task_id`
+* 如果同一秒内发生文件名冲突，在 ID 后追加 `-2`、`-3`
 * 保留用户原始描述
 * 生成简短 summary
 * 可以推断 priority / type

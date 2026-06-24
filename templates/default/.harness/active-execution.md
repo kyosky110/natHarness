@@ -1,6 +1,6 @@
 # Active Execution Rule
 
-当用户说“继续 101 / 执行 101 / 处理当前 active”时：
+当用户说“继续某个任务 ID / 执行某个任务 ID / 处理当前 active”时：
 
 1. 读取对应 `tasks/active/*.md`
 2. 只加载与该任务相关的 project/memory 上下文
@@ -12,7 +12,7 @@
 8. 如完成：
    * 更新 dashboard
    * 读取 `.harness/archive-template.md`
-   * 生成 archive
+   * 使用原任务 ID 生成 archive
    * 如有必要更新 memory
 
 执行时禁止：

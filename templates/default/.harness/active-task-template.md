@@ -2,6 +2,8 @@
 
 ## ID
 
+创建时替换为实际任务 ID，格式 `YYYYMMDD-HHmmss`。
+
 ## Title
 
 ## Priority
