@@ -7,11 +7,15 @@
 * “记个任务”
 * “做 P0”
 * “优化 P0”
-* “开始某任务”
 
 时：
 
 执行 active create。
+
+如果用户说“开始某任务”：
+
+* 对应 active task 不存在时，执行 active create。
+* 对应 active task 已存在时，不创建重复任务；展示任务 summary 和简短 plan，等待用户确认后再进入 `.harness/active-execution.md`。
 
 ---
 
@@ -22,7 +26,7 @@
 3. 生成任务 ID，格式为当前创建时间 `YYYYMMDD-HHmmss`
 4. 按 template 创建 `tasks/active/{ID}-{slug}.md`
 5. 更新 `tasks/dashboard.md`
-6. 将 dashboard 状态设为 `⏳ 等拍板`
+6. 将 dashboard 状态设为 `等拍板`
 7. 展示 active task summary / plan
 8. 停止，等待用户确认
 
