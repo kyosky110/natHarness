@@ -117,13 +117,17 @@ memory/pitfalls.md
 
 ## Example Workflow
 
+After the Harness scaffold is installed, ordinary task creation should not invoke the
+`agent-harness` skill again. The target project's `AGENTS.md` routes task creation
+to `.harness/active-create.md`.
+
 User:
 
 ```text
-Use agent-harness to start a task: add GitHub Actions CI to this project.
+Add a task: add GitHub Actions CI to this project.
 ```
 
-Codex or Claude Code creates or updates Harness files before editing project source code, for example:
+Codex or Claude Code creates an active task before editing project source code, for example:
 
 ```text
 tasks/dashboard.md
@@ -337,13 +341,16 @@ memory/pitfalls.md
 
 ### 示例工作流
 
+安装 Harness 骨架之后，日常添加任务不应该再次调用 `agent-harness` skill。
+目标项目自己的 `AGENTS.md` 会把任务创建路由到 `.harness/active-create.md`。
+
 用户：
 
 ```text
-使用 agent-harness 帮我开始一个任务：给这个项目添加 GitHub Actions CI。
+添加任务：给这个项目添加 GitHub Actions CI。
 ```
 
-Codex 或 Claude Code 会先创建或更新 Harness 文件，而不是直接修改项目源码，例如：
+Codex 或 Claude Code 会先创建 active task，而不是直接修改项目源码，例如：
 
 ```text
 tasks/dashboard.md

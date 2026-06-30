@@ -1,6 +1,6 @@
 ---
 name: agent-harness
-description: Install, initialize, repair, check, or apply a lightweight project Harness scaffold with AGENTS.md, task dashboard, active/archive task files, memory stubs, and .harness templates. Use when a user asks to add project workflow, initialize Harness, repair Harness files, set up task dashboard, create agent project memory, 初始化项目看板, 添加/修复 Harness, 创建任务管理结构, 设置任务 dashboard, or apply this scaffold to a repository.
+description: Install, initialize, repair, check, or apply the reusable Harness scaffold itself, including AGENTS.md, task dashboard, active/archive task directories, memory stubs, and .harness templates. Use only when a user asks to install, initialize, repair, audit, or update Harness files in a project, such as 初始化 Harness, 安装 Harness, 修复 Harness, 初始化项目看板, 创建任务管理结构, or set up task dashboard. Do not use for ordinary project task creation after Harness is installed; follow the target project's AGENTS.md and .harness workflow instead.
 ---
 
 # Agent Harness
